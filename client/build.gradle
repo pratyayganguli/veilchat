@@ -1,0 +1,35 @@
+plugins {
+    id("java")
+}
+
+group = "com.cne"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+
+    /**
+     * @info
+     *
+     * To use the lombok in your dependency you need to configure your build tool to use an annotation processor,
+     * lombok generates code during compilation phase and the annotation processor will help you in integrating that
+     * code in the project
+     */
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    // faker library for generating random data
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
